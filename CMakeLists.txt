@@ -66,7 +66,9 @@ add_custom_command(
   WORKING_DIRECTORY ${GLAD_DIR}
   COMMENT "Generating GLAD"
 )
+add_custom_target(glad-download DEPENDS ${GLAD_SOURCES})
 add_library(glad STATIC ${GLAD_SOURCES})
+add_dependencies(glad glad-download)
 
 target_include_directories(glad PUBLIC ${GLAD_INCLUDE_DIRS})
 
